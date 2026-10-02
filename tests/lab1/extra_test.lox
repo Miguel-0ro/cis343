@@ -1,0 +1,18 @@
+//single char
+( ) {} , . - + ; / *
+
+// 1-2 char operators 
+! != = == < <= > >= 
+
+// literals
+123 45.67
+"hello lox"
+my_variable _underscore1111
+
+//keywords
+and class else flase fun for if nil or print return super this true var while
+
+//lexical errors and edge cases 
+@
+"unterminated string
+
