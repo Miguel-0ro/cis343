@@ -2,6 +2,7 @@ from scanner import Scanner
 import sys
 
 def main():
+    #---Start AI code---
     if len(sys.argv) > 2:
         print("Usage: python main.py [script]")
         sys.exit(64)
@@ -10,6 +11,7 @@ def main():
 
     else:
         run_prompt()
+    #---End AI code--- (never used sys before)
 
 
 def run_file(path):
@@ -18,6 +20,7 @@ def run_file(path):
     run(source)
 
 def run_prompt():
+    
     while True:
         try:
             line = input("> ")
@@ -32,7 +35,7 @@ def run(source):
     tokens = scanner.scan_tokens()
     for token in tokens:
         print(token)
-
+    
 if __name__ == "__main__":
     main()
 

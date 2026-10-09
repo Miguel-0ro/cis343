@@ -119,14 +119,14 @@ class Scanner:
             self.line += 1
 
         #check for bang 
-        #START AI CODE//
+        #--- Start AI Code ---
         elif c == '!':
             if self.peek() == '=':
                 self.advance()
                 self.tokens.append(Token(TokenType.BANG_EQUAL, "!=", None, self.line))
             else:
                 self.tokens.append(Token(TokenType.BANG, "!", None, self.line))
-        # END AI CODE// 
+        #--- End AI code --- (wanted an example for what it should look like)
 
         #check for less than 
         elif c == '<':
