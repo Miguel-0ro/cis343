@@ -85,6 +85,7 @@ class Scanner:
         self.start = 0
         self.current = 0
         self.line = 1
+        self.errors = []
 
     def scan_tokens(self):
         while self.current < len(self.source):
@@ -172,7 +173,7 @@ class Scanner:
                 self.advance()
 
             if self.current >= len(self.source):
-                print(f"[Line {self.line}] Error: Weird String")
+                self.errors.append(f"[Line {self.line}] Error: Unterminated string.")
                 return
 
             self.advance()
@@ -186,7 +187,9 @@ class Scanner:
             while self.peek().isdigit() and self.current < len(self.source):
                 self.advance()
 
-            if self.peek() == '.' and self.source[self.current + 1].isdigit():
+            # --- start AI code ---
+            if self.peek() == '.' and self.current + 1 < len(self.source) and self.source[self.current + 1].isdigit():
+            # --- end AI code ---
                 self.advance()
         
             while self.peek().isdigit() and self.current < len(self.source):
@@ -207,7 +210,7 @@ class Scanner:
 
         #incase char isnt recognized 
         else:
-            print(f"[Line {self.line}] Error: Character Uknown: {c}")
+            self.errors.append(f"[Line {self.line}] Error: Unexpected character '{c}'.")
 
 
         
@@ -219,8 +222,5 @@ class Scanner:
 
     def peek(self):
         if self.current >= len(self.source):
-            return "O"
+            return "\0"
         return self.source[self.current]
-
-    
-    
